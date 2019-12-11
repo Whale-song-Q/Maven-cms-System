@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qhm.dao.UserDao">
+
+	    <select id="select" resultType="User">
+			select * from cms_user
+		</select>
+		
+		<select id="selectById" resultType="User">
+			select * from cms_user where id=#{id}
+		</select>
+		
+		<select id="count" resultType="int"> 
+			select count(*) from cms_user
+		</select>
+		
+		<insert id="insert">
+			insert into cms_user(username,password)
+			values(#{user.username},#{user.password})
+		</insert>
+		
+		<update id="update">
+			update cms_user set 
+			username=#{user.usernmae},
+			password=#{user.password}
+			where id=#{user.id}
+		</update>
+		
+		<delete id="deleteById">
+			delete from cms_user where id=#{id}
+		</delete>
+		
+		<delete id="deleteByIds">
+			delete from cms_user where id in(${id})
+		</delete>
+	
+	
+<!-- Channel实体类增删改查 -->
+	
+	
+		<select id="Channelselect" resultType="Channel">
+				select * from cms_Channel
+			</select>
+			
+			<select id="ChannelselectById" resultType="Channel">
+				select * from cms_Channel where id=#{id}
+			</select>
+			
+			<select id="Channelcount" resultType="int"> 
+				select count(*) from cms_Channel
+			</select>
+			
+			<insert id="Channelinsert">
+				insert into cms_Channel(name,description)
+				values(#{Channel.name},#{Channel.description})
+			</insert>
+			
+			<update id="Channelupdate">
+				update cms_Channel set 
+				name=#{Channel.name},
+				description=#{Channel.description}
+				where id=#{Channel.id}
+			</update>
+			
+			<delete id="ChanneldeleteById">
+				delete from cms_Channel where id=#{id}
+			</delete>
+			
+			<delete id="ChanneldeleteByIds">
+				delete from cms_Channel where id in(${id})
+			</delete>	
+	
+<!-- Category实体类增删改查 -->
+	
+	
+		<select id="Categoryselect" resultType="Category">
+				select * from cms_Category
+			</select>
+			
+			<select id="CategoryselectById" resultType="Category">
+				select * from cms_Category where id=#{id}
+			</select>
+			
+			<select id="Categorycount" resultType="int"> 
+				select count(*) from cms_Category
+			</select>
+			
+			<insert id="Categoryinsert">
+				insert into cms_Category(name,channel_id)
+				values(#{Category.name},#{Category.channel_id})
+			</insert>
+			
+			<update id="Categoryupdate">
+				update cms_Category set 
+				name=#{Category.name},
+				channel_id=#{Category.channel_id}
+				where id=#{Category.id}
+			</update>
+			
+			<delete id="CategorydeleteById">
+				delete from cms_Category where id=#{id}
+			</delete>
+			
+			<delete id="CategorydeleteByIds">
+				delete from cms_Category where id in(${id})
+			</delete>	
+		
+<!-- Article实体类增删改查 -->
+		
+		<select id="Articleselect" resultType="Article">
+				select * from cms_Article
+			</select>
+			
+			<select id="ArticleselectById" resultType="Article">
+				select * from cms_Article where id=#{id}
+			</select>
+			
+			<select id="Articlecount" resultType="int"> 
+				select count(*) from cms_Article
+			</select>
+			
+			<insert id="Articleinsert">
+				insert into cms_Article(title,content,picture,channel_id,category_id,user_id,hits,hot,status,deleted,created,updated,commentCnt)
+				values(#{Article.title},#{Article.content},#{Article.picture},#{Article.channel_id},#{Article.category_id},#{Article.user_id},#{Article.hits},#{Article.hot},#{Article.status},#{Article.deleted},#{Article.created},#{Article.updated},#{Article.commentCnt})
+			</insert>
+			
+			<update id="Articleupdate">
+				update cms_Category set 
+				
+				title=#{Article.title},
+				content=#{Article.content},
+				picture=#{Article.picture},
+				channel_id=#{Article.channel_id},
+				category_id=#{Article.category_id},
+				user_id=#{Article.user_id},
+				hits=#{Article.hits},
+				hot=#{Article.hot},
+				status=#{Article.status},
+				deleted=#{Article.deleted},
+				created=#{Article.created},
+				updated=#{Article.updated},
+				commentCnt=#{Article.commentCnt}
+				
+				where id=#{Article.id}
+			</update>
+			
+			<delete id="ArticledeleteById">
+				delete from cms_Article where id=#{id}
+			</delete>
+			
+			<delete id="ArticledeleteByIds">
+				delete from cms_Article where id in(${id})
+			</delete>		
+<!-- Tag实体类增删改查 -->
+	
+	
+		<select id="Tagselect" resultType="Tag">
+				select * from cms_Tag
+			</select>
+			
+			<select id="TagselectById" resultType="Tag">
+				select * from cms_Tag where id=#{id}
+			</select>
+			
+			<select id="Tagcount" resultType="int"> 
+				select count(*) from cms_Tag
+			</select>
+			
+			<insert id="Taginsert">
+				insert into cms_Tag(tagname)
+				values(#{Tag.tagname})
+			</insert>
+			
+			<update id="Tagupdate">
+				update cms_Tag set 
+				tagname=#{Tag.tagname}
+				where id=#{Tag.id}
+			</update>
+			
+			<delete id="TagdeleteById">
+				delete from cms_Tag where id=#{id}
+			</delete>
+			
+			<delete id="TagdeleteByIds">
+				delete from cms_Tag where id in(${id})
+			</delete>		
+
+<!-- Slide实体类增删改查 -->
+	
+	
+		<select id="Slideselect" resultType="Slide">
+				select * from cms_Slide
+			</select>
+			
+			<select id="SlideselectById" resultType="Slide">
+				select * from cms_Slide where id=#{id}
+			</select>
+			
+			<select id="Slidecount" resultType="int"> 
+				select count(*) from cms_Slide
+			</select>
+			
+			<insert id="Slideinsert">
+				insert into cms_Slide(title,prcture,url)
+				values(#{Slide.title},#{Slide.prcture},#{Slide.url})
+			</insert>
+			
+			<update id="Slideupdate">
+				update cms_Slide set 
+				title=#{Slide.title},
+				prcture=#{Slide.prcture},
+				url=#{Slide.url}
+				where id=#{Slide.id}
+			</update>
+			
+			<delete id="SlidedeleteById">
+				delete from cms_Slide where id=#{id}
+			</delete>
+			
+			<delete id="SlidedeleteByIds">
+				delete from cms_Slide where id in(${id})
+			</delete>		
+
+<!-- Settings实体类增删改查 -->
+	
+	
+		<select id="Settingsselect" resultType="Settings">
+				select * from cms_Settings
+			</select>
+			
+			<select id="SettingsselectById" resultType="Settings">
+				select * from cms_Settings where id=#{id}
+			</select>
+			
+			<select id="Settingscount" resultType="int"> 
+				select count(*) from cms_Settings
+			</select>
+			
+			<insert id="Settingsinsert">
+				insert into cms_Settings(
+				site_domain,
+				site_name,
+				article_list_size,
+				slide_size,
+				admin_username,
+				admin_password)
+				values(
+				#{Settings.site_domain},
+				#{Settings.site_name},
+				#{Settings.article_list_size},
+				#{Settings.slide_size},
+				#{Settings.admin_username},
+				#{Settings.admin_password})
+			</insert>
+			
+			<update id="Settingsupdate">
+				update cms_Settings set 
+				site_domain=#{Settings.site_domain},
+				site_name=#{Settings.site_name},
+				article_list_size=#{Settings.article_list_size},
+				slide_size=#{Settings.slide_size},
+				admin_username=#{Settings.admin_username},
+				admin_password=#{Settings.admin_password}
+				where id=#{Settings.id}
+			</update>
+			
+			<delete id="SettingsdeleteById">
+				delete from cms_Settings where id=#{id}
+			</delete>
+			
+			<delete id="SettingsdeleteByIds">
+				delete from cms_Settings where id in(${id})
+			</delete>		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</mapper>
